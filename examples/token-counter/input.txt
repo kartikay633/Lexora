@@ -1,0 +1,10 @@
+#include <stdio.h>
+int main() {
+    int x = 10;
+    int y = x + 5;
+    if (y > 10) {
+        y = y * 2;
+    }
+    printf("Result: %d\n", y);
+    return 0;
+}

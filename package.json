@@ -1,0 +1,23 @@
+{
+  "name": "lexora",
+  "version": "1.0.0",
+  "description": "Lexora \u2014 Web-Based Compiler Design Workbench",
+  "private": true,
+  "scripts": {
+    "dev:backend": "cd backend && node server.js",
+    "dev:frontend": "cd frontend && npm run dev",
+    "install:all": "cd backend && npm install && cd ../frontend && npm install",
+    "test": "node backend/test.js && node --test backend/regression.test.js backend/analysis.test.js && node --test frontend/files.test.js",
+    "dev": "node dev.cjs",
+    "build": "npm --prefix frontend run build"
+  },
+  "keywords": [
+    "compiler",
+    "lexer",
+    "parser",
+    "flex",
+    "bison",
+    "compiler-design"
+  ],
+  "license": "MIT"
+}

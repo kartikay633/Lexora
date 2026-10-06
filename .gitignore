@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Environment
+.env
+.env.local
+
+# Temp files
+*.tmp
+lexora-*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.swp
+*.swo
+
+# Compiler artifacts (in examples)
+examples/**/lex.yy.c
+examples/**/parser.tab.c
+examples/**/parser.tab.h
+examples/**/calculator.tab.c
+examples/**/calculator.tab.h
+examples/**/calculator
+examples/**/compiler
+examples/**/*.o

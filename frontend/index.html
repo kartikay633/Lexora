@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lexora — Compiler Design Workbench</title>
+    <meta name="description" content="Interactive web-based Compiler Design Workbench featuring Flex/Bison execution, token extraction, AST visualization, symbol table, Three-Address Code, and code optimization." />
+    <script>
+      try {
+        if (localStorage.getItem('lexora.theme') === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (_) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

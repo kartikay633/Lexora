@@ -1,0 +1,326 @@
+.parse-tree-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--bg-app);
+}
+
+.tree-toolbar {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--border-default);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-primary);
+  user-select: none;
+}
+
+.toolbar-left {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.tree-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.tree-node-count {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.zoom-controls {
+  display: flex;
+  align-items: center;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+  gap: 2px;
+}
+
+.tool-btn {
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 0.25rem 0.45rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.tool-btn:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.zoom-level {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  padding: 0 0.4rem;
+}
+
+.view-switch {
+  display: flex;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+}
+
+.switch-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.74rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.switch-btn.active {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.tree-canvas-container {
+  flex: 1;
+  overflow: auto;
+  position: relative;
+  background-color: #0b0c10;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.diagram-scroll-area {
+  min-width: 100%;
+  min-height: 100%;
+  padding: 12px;
+}
+
+.ast-svg-canvas {
+  display: block;
+}
+
+/* Connecting Curve Lines */
+.ast-edge-curve {
+  fill: none;
+  stroke: #2e3346;
+  stroke-width: 2.2px;
+  stroke-linecap: round;
+  transition: stroke 0.2s ease;
+}
+
+.ast-node-group {
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ast-node-group:hover .node-element {
+  filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.35));
+}
+
+.ast-node-group:hover .ast-edge-curve {
+  stroke: var(--accent-primary);
+}
+
+/* 3D Operator Nodes */
+.node-circle {
+  fill: #1e222e;
+  stroke: #363c50;
+  stroke-width: 2px;
+}
+
+.node-circle-inner {
+  fill: #151822;
+  stroke: rgba(255, 255, 255, 0.05);
+}
+
+.node-type-op:hover .node-circle {
+  stroke: var(--accent-primary);
+}
+
+.node-text {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  user-select: none;
+}
+
+.op-text {
+  fill: var(--text-primary);
+  font-size: 0.88rem;
+}
+
+/* 3D Leaf Nodes */
+.node-rect {
+  fill: #1a1e28;
+  stroke: #2e3547;
+  stroke-width: 1.5px;
+}
+
+.node-rect-inner {
+  fill: #12151d;
+  stroke: rgba(255, 255, 255, 0.03);
+}
+
+.node-type-num .node-rect {
+  stroke: #334155;
+}
+
+.node-type-num:hover .node-rect {
+  stroke: var(--color-success);
+}
+
+.node-type-id:hover .node-rect {
+  stroke: #a855f7;
+}
+
+.leaf-title {
+  fill: var(--text-primary);
+  font-size: 0.82rem;
+}
+
+.node-sub-text {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  fill: var(--text-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Selected Node highlight */
+.ast-node-group.selected .node-circle,
+.ast-node-group.selected .node-rect {
+  stroke: var(--accent-primary);
+  stroke-width: 2.5px;
+}
+
+/* Inspector Card */
+.node-inspector-card {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 220px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: 0.85rem;
+  z-index: 10;
+  animation: fadeIn 0.15s ease-out;
+}
+
+.inspector-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.inspector-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.btn-close-inspector {
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  padding: 0.1rem 0.3rem;
+  border-radius: var(--radius-sm);
+}
+
+.btn-close-inspector:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.inspector-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.inspector-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.76rem;
+}
+
+.prop-name {
+  color: var(--text-muted);
+}
+
+.prop-value {
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.json-container {
+  padding: 1.25rem;
+  overflow: auto;
+  height: 100%;
+}
+
+.json-ast-display {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+.tree-toolbar { flex-wrap:wrap; gap:8px; }
+.tree-canvas-container { min-height:0; }
+.node-circle, .node-rect { fill:#1b2229; stroke:#3d4a56; }
+.node-circle-inner, .node-rect-inner { fill:#151b22; }
+.ast-edge-curve { stroke:#43525f; }
+
+[data-theme="light"] .tree-canvas-container {
+  background-color: #f8fafc;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+}
+
+[data-theme="light"] .node-circle,
+[data-theme="light"] .node-rect {
+  fill: #ffffff;
+  stroke: #cbd5e1;
+}
+
+[data-theme="light"] .node-circle-inner,
+[data-theme="light"] .node-rect-inner {
+  fill: #f1f5f9;
+}
+
+[data-theme="light"] .ast-edge-curve {
+  stroke: #94a3b8;
+}
+
+[data-theme="light"] .json-ast-display {
+  color: var(--text-secondary);
+}
