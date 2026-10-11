@@ -1,0 +1,154 @@
+{
+  "success": true,
+  "analysisNote": "Input analysis uses Lexora’s built-in C subset and expression parser. Your Lex/Yacc program runs separately.",
+  "analysisStatus": "ready",
+  "analysisMessage": "Input analysis completed.",
+  "output": "13\n",
+  "compilationLog": "flex → lex.yy.c ✓\nbison → parser.tab.c ✓\ngcc → compiler ✓\nexecution ✓",
+  "errors": [],
+  "executionTime": 5080,
+  "tokens": [
+    {
+      "id": 1,
+      "type": "NUMBER",
+      "lexeme": "3",
+      "line": 1,
+      "position": 0
+    },
+    {
+      "id": 2,
+      "type": "PLUS",
+      "lexeme": "+",
+      "line": 1,
+      "position": 2
+    },
+    {
+      "id": 3,
+      "type": "NUMBER",
+      "lexeme": "5",
+      "line": 1,
+      "position": 4
+    },
+    {
+      "id": 4,
+      "type": "MULTIPLY",
+      "lexeme": "*",
+      "line": 1,
+      "position": 6
+    },
+    {
+      "id": 5,
+      "type": "NUMBER",
+      "lexeme": "2",
+      "line": 1,
+      "position": 8
+    },
+    {
+      "id": 6,
+      "type": "EOL",
+      "lexeme": "\\n",
+      "line": 1,
+      "position": 9
+    }
+  ],
+  "ast": {
+    "type": "BinaryOp",
+    "op": "+",
+    "left": {
+      "type": "Number",
+      "value": 3
+    },
+    "right": {
+      "type": "BinaryOp",
+      "op": "*",
+      "left": {
+        "type": "Number",
+        "value": 5
+      },
+      "right": {
+        "type": "Number",
+        "value": 2
+      }
+    }
+  },
+  "symbolTable": [],
+  "semanticErrors": [],
+  "tac": [
+    {
+      "op": "*",
+      "arg1": "5",
+      "arg2": "2",
+      "result": "t1",
+      "text": "t1 = 5 * 2"
+    },
+    {
+      "op": "+",
+      "arg1": "3",
+      "arg2": "t1",
+      "result": "t2",
+      "text": "t2 = 3 + t1"
+    }
+  ],
+  "optimizedTac": [
+    {
+      "op": "=",
+      "arg1": "10",
+      "arg2": null,
+      "result": "t1",
+      "text": "t1 = 10"
+    },
+    {
+      "op": "=",
+      "arg1": "13",
+      "arg2": null,
+      "result": "t2",
+      "text": "t2 = 13"
+    }
+  ],
+  "optimizationLog": [
+    {
+      "line": 1,
+      "type": "Constant Folding",
+      "before": "t1 = 5 * 2",
+      "after": "t1 = 10",
+      "description": "Evaluated 5 * 2 → 10"
+    },
+    {
+      "line": 2,
+      "type": "Constant Propagation",
+      "before": "t1",
+      "after": "10",
+      "description": "Substituted constant t1 = 10"
+    },
+    {
+      "line": 2,
+      "type": "Constant Folding",
+      "before": "t2 = 3 + t1",
+      "after": "t2 = 13",
+      "description": "Evaluated 3 + 10 → 13"
+    }
+  ],
+  "basicBlocks": [
+    {
+      "label": "B1",
+      "instructions": [
+        {
+          "op": "*",
+          "arg1": "5",
+          "arg2": "2",
+          "result": "t1",
+          "text": "t1 = 5 * 2"
+        },
+        {
+          "op": "+",
+          "arg1": "3",
+          "arg2": "t1",
+          "result": "t2",
+          "text": "t2 = 3 + t1"
+        }
+      ],
+      "successors": []
+    }
+  ],
+  "warnings": ""
+}

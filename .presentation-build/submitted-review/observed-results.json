@@ -1,0 +1,151 @@
+[
+  {
+    "kind": "native",
+    "input": "3 + 5 * 2\n",
+    "success": true,
+    "output": "13\n",
+    "errors": [],
+    "ast": {
+      "type": "BinaryOp",
+      "op": "+",
+      "left": {
+        "type": "Number",
+        "value": 3
+      },
+      "right": {
+        "type": "BinaryOp",
+        "op": "*",
+        "left": {
+          "type": "Number",
+          "value": 5
+        },
+        "right": {
+          "type": "Number",
+          "value": 2
+        }
+      }
+    }
+  },
+  {
+    "kind": "native",
+    "input": "(3 + 5) * 2\n",
+    "success": true,
+    "output": "16\n",
+    "errors": [],
+    "ast": {
+      "type": "BinaryOp",
+      "op": "*",
+      "left": {
+        "type": "BinaryOp",
+        "op": "+",
+        "left": {
+          "type": "Number",
+          "value": 3
+        },
+        "right": {
+          "type": "Number",
+          "value": 5
+        }
+      },
+      "right": {
+        "type": "Number",
+        "value": 2
+      }
+    }
+  },
+  {
+    "kind": "analysis",
+    "input": "int x = 2 + 3 * 4; int y = x + 1;",
+    "status": "ready",
+    "symbols": [
+      {
+        "name": "x",
+        "type": "int",
+        "kind": "variable",
+        "scope": "global",
+        "declared": true,
+        "used": true
+      },
+      {
+        "name": "y",
+        "type": "int",
+        "kind": "variable",
+        "scope": "global",
+        "declared": true,
+        "used": false
+      }
+    ],
+    "errors": [],
+    "message": "Input analysis completed.",
+    "tac": [
+      "t1 = 3 * 4",
+      "t2 = 2 + t1",
+      "x = t2",
+      "t3 = x + 1",
+      "y = t3"
+    ],
+    "optimized": [
+      "t1 = 12",
+      "t2 = 14",
+      "x = 14",
+      "t3 = 15",
+      "y = 15"
+    ]
+  },
+  {
+    "kind": "analysis",
+    "input": "int x = missing + 1;",
+    "status": "ready",
+    "symbols": [
+      {
+        "name": "x",
+        "type": "int",
+        "kind": "variable",
+        "scope": "global",
+        "declared": true,
+        "used": false
+      },
+      {
+        "name": "missing",
+        "type": "unknown",
+        "kind": "variable",
+        "scope": "global",
+        "declared": false,
+        "used": true
+      }
+    ],
+    "errors": [
+      {
+        "phase": "semantic",
+        "message": "Variable 'missing' used before declaration / assignment."
+      }
+    ],
+    "message": "Input analysis completed.",
+    "tac": [
+      "t1 = missing + 1",
+      "x = t1"
+    ],
+    "optimized": [
+      "t1 = missing + 1",
+      "x = t1"
+    ]
+  },
+  {
+    "kind": "analysis",
+    "input": "int a[2];",
+    "status": "unsupported",
+    "symbols": [
+      {
+        "name": "a",
+        "type": "unknown",
+        "scope": "input",
+        "declared": null,
+        "used": true
+      }
+    ],
+    "errors": [],
+    "message": "Input analysis could not parse line 1: Unsupported character '['. Supported: arithmetic, declarations, functions, calls, return, if/else, while and for. The console still shows your native program’s result.",
+    "tac": [],
+    "optimized": []
+  }
+]

@@ -1,0 +1,240 @@
+{"kind":"deck","id":"pr/tropry","name":"Deck"}
+{"kind":"layout","layoutId":"c79f94c1-c585-46de-8aac-e34c4aae7987","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"9875811f-765f-4559-a7f6-de9abd11fc05","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/zle29f","slide":1,"title":"LEXORA","textShapes":6}
+{"kind":"textbox","id":"sh/s7y9wfut","slide":1,"text":"LEXORA","textPreview":"LEXORA","textChars":6,"textLines":1,"bbox":[64,48,1150,92]}
+{"kind":"textbox","id":"sh/r65snad8","slide":1,"text":"LEXORA","textPreview":"LEXORA","textChars":6,"textLines":1,"bbox":[64,672,300,24]}
+{"kind":"textbox","id":"sh/6lwrupcn","slide":1,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[1150,672,64,24]}
+{"kind":"textbox","id":"sh/5knalkv2","slide":1,"text":"A visual workbench for\ncompiler design","textPreview":"A visual workbench for | compiler design","textChars":38,"textLines":2,"bbox":[64,200,1100,180]}
+{"kind":"textbox","id":"sh/4je9sfuh","slide":1,"text":"Lex / Yacc execution and step-by-step input analysis","textPreview":"Lex / Yacc execution and step-by-step input analysis","textChars":52,"textLines":1,"bbox":[68,438,1080,70]}
+{"kind":"textbox","id":"sh/ji5sjadw","slide":1,"text":"Compiler Design Project Presentation","textPreview":"Compiler Design Project Presentation","textChars":36,"textLines":1,"bbox":[68,565,1000,48]}
+{"kind":"notes","id":"nt/zle29f","slide":1,"text":"Opening: Lexora is a browser-based workbench for compiler-design assignments. It runs real Flex and Bison specifications and provides a separate educational analysis of program input. Suggested presentation duration: 12–15 minutes. Implementation sources: README.md; frontend/src/App.jsx; backend/services/compiler.js; backend/services/inputAnalysis.js."}
+{"kind":"slide","id":"sl/51rb3j","slide":2,"title":"Problem identification","textShapes":9}
+{"kind":"textbox","id":"sh/z298bipw","slide":2,"text":"Problem identification","textPreview":"Problem identification","textChars":22,"textLines":1,"bbox":[64,48,1150,92]}
+{"kind":"textbox","id":"sh/03i9436h","slide":2,"text":"LEXORA","textPreview":"LEXORA","textChars":6,"textLines":1,"bbox":[64,672,300,24]}
+{"kind":"textbox","id":"sh/l4rqd872","slide":2,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1150,672,64,24]}
+{"kind":"textbox","id":"sh/m50r6don","slide":2,"text":"Students need to connect compiler theory\nwith a program they can actually run.","textPreview":"Students need to connect compiler theory | with a program they can actually run.","textChars":78,"textLines":2,"bbox":[64,167,1150,110]}
+{"kind":"textbox","id":"sh/n6t8fip8","slide":2,"text":"Tool setup","textPreview":"Tool setup","textChars":10,"textLines":1,"bbox":[64,322,520,46]}
+{"kind":"textbox","id":"sh/87298n6t","slide":2,"text":"Separate files, terminal commands, and generated C files make early experiments harder to follow.","textPreview":"Separate files, terminal commands, and generated C files make early experiments harder to follow.","textChars":97,"textLines":1,"bbox":[64,376,520,116]}
+{"kind":"textbox","id":"sh/98bqhs7y","slide":2,"text":"Limited visibility","textPreview":"Limited visibility","textChars":18,"textLines":1,"bbox":[672,322,520,46]}
+{"kind":"textbox","id":"sh/a9kraxoj","slide":2,"text":"Program output alone does not explain tokens, syntax structure, scopes, or intermediate code.","textPreview":"Program output alone does not explain tokens, syntax structure, scopes, or intermediate code.","textChars":93,"textLines":1,"bbox":[672,376,520,116]}
+{"kind":"textbox","id":"sh/vatsj254","slide":2,"text":"Project need: one workspace for execution, diagnostics, and compiler-phase explanations.","textPreview":"Project need: one workspace for execution, diagnostics, and compiler-phase explanations.","textChars":88,"textLines":1,"bbox":[64,600,1152,55]}
+{"kind":"notes","id":"nt/51rb3j","slide":2,"text":"Frame these as the project motivation, not findings from a user study. Traditional tool workflows require several commands and do not automatically supply the educational views implemented in Lexora."}
+{"kind":"slide","id":"sl/iu0lh4","slide":3,"title":"Project objectives","textShapes":15}
+{"kind":"textbox","id":"sh/cnu983e1","slide":3,"text":"Project objectives","textPreview":"Project objectives","textChars":18,"textLines":1,"bbox":[64,48,1150,92]}
+{"kind":"textbox","id":"sh/bml8zydg","slide":3,"text":"LEXORA","textPreview":"LEXORA","textChars":6,"textLines":1,"bbox":[64,672,300,24]}
+{"kind":"textbox","id":"sh/qls76twv","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1150,672,64,24]}
+{"kind":"textbox","id":"sh/pkjqxova","slide":3,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[64,165,72,56]}
+{"kind":"textbox","id":"sh/ojap43ep","slide":3,"text":"Run real specifications","textPreview":"Run real specifications","textChars":23,"textLines":1,"bbox":[160,165,1050,40]}
+{"kind":"textbox","id":"sh/3i18vydk","slide":3,"text":"Compile selected .l and .y files and execute them with user input.","textPreview":"Compile selected .l and .y files and execute them with user input.","textChars":66,"textLines":1,"bbox":[160,209,1040,55]}
+{"kind":"textbox","id":"sh/2hs72twz","slide":3,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[64,275,72,56]}
+{"kind":"textbox","id":"sh/1gjqtove","slide":3,"text":"Explain compiler phases","textPreview":"Explain compiler phases","textChars":23,"textLines":1,"bbox":[160,275,1050,40]}
+{"kind":"textbox","id":"sh/gfap0jet","slide":3,"text":"Expose tokens, AST, symbol table, TAC, optimization, and basic blocks.","textPreview":"Expose tokens, AST, symbol table, TAC, optimization, and basic blocks.","textChars":70,"textLines":1,"bbox":[160,319,1040,55]}
+{"kind":"textbox","id":"sh/al83ed4b","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[64,385,72,56]}
+{"kind":"textbox","id":"sh/vmh4ni5w","slide":3,"text":"Make experiments repeatable","textPreview":"Make experiments repeatable","textChars":27,"textLines":1,"bbox":[160,385,1050,40]}
+{"kind":"textbox","id":"sh/wnqlg3mh","slide":3,"text":"Keep browser drafts and provide examples, uploads, and downloads.","textPreview":"Keep browser drafts and provide examples, uploads, and downloads.","textChars":65,"textLines":1,"bbox":[160,429,1040,55]}
+{"kind":"textbox","id":"sh/xozmp83m","slide":3,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[64,495,72,56]}
+{"kind":"textbox","id":"sh/mh83at4z","slide":3,"text":"Make failures understandable","textPreview":"Make failures understandable","textChars":28,"textLines":1,"bbox":[160,495,1050,40]}
+{"kind":"textbox","id":"sh/nih4jy5k","slide":3,"text":"Return stage-specific errors, native output, and analysis status.","textPreview":"Return stage-specific errors, native output, and analysis status.","textChars":65,"textLines":1,"bbox":[160,539,1040,55]}
+{"kind":"notes","id":"nt/iu0lh4","slide":3,"text":"Explain each objective using a demonstrable feature. Educational analysis is restricted to the built-in C subset. No measured learning improvement is claimed. Implementation sources: README.md; frontend/src/App.jsx; backend/services/compiler.js; backend/services/inputAnalysis.js."}
+{"kind":"slide","id":"sl/wxa3f6","slide":4,"title":"Literature survey","textShapes":4}
+{"kind":"textbox","id":"sh/7exwri10","slide":4,"text":"Literature survey","textPreview":"Literature survey","textChars":17,"textLines":1,"bbox":[64,48,1150,92]}
+{"kind":"textbox","id":"sh/8f6xkn2l","slide":4,"text":"LEXORA","textPreview":"LEXORA","textChars":6,"textLines":1,"bbox":[64,672,300,24]}
+{"kind":"textbox","id":"sh/tgfetsj6","slide":4,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1150,672,64,24]}
+{"kind":"textbox","id":"sh/jaxwni14","slide":4,"text":"The project applies established compiler methods in a unified teaching interface.","textPreview":"The project applies established compiler methods in a unified teaching interface.","textChars":81,"textLines":1,"bbox":[64,600,1152,55]}
+{"kind":"table","id":"tb/byhkzepw","slide":4,"name":"","rows":5,"cols":3,"preview":"Source | Core contribution | Application in Lexora","bbox":[64,166,1152,410]}
+{"kind":"notes","id":"nt/wxa3f6","slide":4,"text":"[1] Aho, Lam, Sethi and Ullman. Compilers: Principles, Techniques, and Tools, 2nd ed., Addison-Wesley, 2007. https://www.cs.columbia.edu/~aho/books.html and course outline https://www.cs.columbia.edu/~aho/cs4115/\n[2] Flex manual, Introduction. https://westes.github.io/flex/manual/Introduction.html\n[3] GNU Bison manual, Introduction and LR Table Construction. https://www.gnu.org/s/bison/manual/bison.html\n[4] GCC manual, Overall Options. https://gcc.gnu.org/onlinedocs/gcc/Overall-Options.html\nThe last column describes how Lexora applies the sources, not claims of shortcomings in the literature."}
+{"kind":"slide","id":"sl/vrg8xc","slide":5,"title":"Novelty and project contribution","textShapes":11}
+{"kind":"textbox","id":"sh/8bq5sjad","slide":5,"text":"Novelty and project contribution","textPreview":"Novelty and project contribution","textChars":32,"textLines":1,"bbox":[64,48,1150,92]}
+{"kind":"textbox","id":"sh/7ah4jets","slide":5,"text":"LEXORA","textPreview":"LEXORA","textChars":6,"textLines":1,"bbox":[64,672,300,24]}
+{"kind":"textbox","id":"sh/m9onq9c7","slide":5,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1150,672,64,24]}
+{"kind":"textbox","id":"sh/l8fmh4b2","slide":5,"text":"Unified practical workflow","textPreview":"Unified practical workflow","textChars":26,"textLines":1,"bbox":[64,180,540,46]}
+{"kind":"textbox","id":"sh/k76lojuh","slide":5,"text":"Edit specifications, select targets, enter stdin, compile, and inspect results in one browser workspace.","textPreview":"Edit specifications, select targets, enter stdin, compile, and inspect results in one browser workspace.","textChars":104,"textLines":1,"bbox":[64,234,540,116]}
+{"kind":"textbox","id":"sh/z6x4fetw","slide":5,"text":"Two complementary views","textPreview":"Two complementary views","textChars":23,"textLines":1,"bbox":[672,180,540,46]}
+{"kind":"textbox","id":"sh/y5o3m9cb","slide":5,"text":"Native execution shows actual program behavior. Input analysis explains a supported language subset.","textPreview":"Native execution shows actual program behavior. Input analysis explains a supported language subset.","textChars":100,"textLines":1,"bbox":[672,234,540,116]}
+{"kind":"textbox","id":"sh/54jmt8b6","slide":5,"text":"Persistent learning workspace","textPreview":"Persistent learning workspace","textChars":29,"textLines":1,"bbox":[64,390,540,46]}
+{"kind":"textbox","id":"sh/43a503al","slide":5,"text":"Browser drafts, ready-to-run examples, and source downloads support repeated experiments.","textPreview":"Browser drafts, ready-to-run examples, and source downloads support repeated experiments.","textChars":89,"textLines":1,"bbox":[64,444,540,116]}
+{"kind":"textbox","id":"sh/ilgvaxc7","slide":5,"text":"Visible intermediate forms","textPreview":"Visible intermediate forms","textChars":26,"textLines":1,"bbox":[672,390,540,46]}
+{"kind":"textbox","id":"sh/jmpc32ds","slide":5,"text":"Students can relate AST structure to scoped symbols, TAC, optimized TAC, and basic blocks.","textPreview":"Students can relate AST structure to scoped symbols, TAC, optimized TAC, and basic blocks.","textChars":90,"textLines":1,"bbox":[672,444,540,116]}
+{"kind":"notes","id":"nt/vrg8xc","slide":5,"text":"Position novelty at the integration and educational workflow level. The project does not invent Flex, Bison, parsing, TAC, or optimization algorithms. Comparison is a design interpretation, not a benchmark or exhaustive market survey. Implementation sources: README.md; frontend/src/App.jsx; backend/services/compiler.js; backend/services/inputAnalysis.js."}
+{"kind":"slide","id":"sl/o03m3o","slide":6,"title":"System architecture: block diagram","textShapes":11}
+{"kind":"textbox","id":"sh/t8f250va","slide":6,"text":"System architecture: block diagram","textPreview":"System architecture: block diagram","textChars":34,"textLines":1,"bbox":[64,48,1150,92]}
+{"kind":"textbox","id":"sh/6lo3alcj","slide":6,"text":"LEXORA","textPreview":"LEXORA","textChars":6,"textLines":1,"bbox":[64,672,300,24]}
+{"kind":"textbox","id":"sh/7mxk3qd4","slide":6,"text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[1150,672,64,24]}
+{"kind":"textbox","id":"sh/gbqlgful","slide":6,"text":"Browser workspace\nReact + CodeMirror","textPreview":"Browser workspace | React + CodeMirror","textChars":36,"textLines":2,"bbox":[64,185,325,105]}
+{"kind":"textbox","id":"sh/hcz29kv6","slide":6,"text":"Backend API\nNode.js + Express","textPreview":"Backend API | Node.js + Express","textChars":29,"textLines":2,"bbox":[478,185,325,105]}
+{"kind":"textbox","id":"sh/u9o3e5cv","slide":6,"text":"Native toolchain\nFlex + Bison + GCC","textPreview":"Native toolchain | Flex + Bison + GCC","textChars":35,"textLines":2,"bbox":[892,185,325,105]}
+{"kind":"shape","id":"sh/vaxk7adg","slide":6,"bbox":[389,237.5,89,0]}
+{"kind":"shape","id":"sh/4fqlkfux","slide":6,"bbox":[803,237.5,89,0]}
+{"kind":"textbox","id":"sh/5gz2dkvi","slide":6,"text":"HTTP / JSON","textPreview":"HTTP / JSON","textChars":11,"textLines":1,"bbox":[390,145,220,35]}
+{"kind":"textbox","id":"sh/dcbixgra","slide":6,"text":"Browser storage\nSaved drafts","textPreview":"Browser storage | Saved drafts","textChars":28,"textLines":2,"bbox":[64,432,325,105]}
+{"kind":"textbox","id":"sh/cr21oba5","slide":6,"text":"Built-in analyzer\nEducational C subset","textPreview":"Built-in analyzer | Educational C subset","textChars":38,"textLines":2,"bbox":[478,432,325,105]}
+{"kind":"textbox","id":"sh/rqt0v69k","slide":6,"text":"Temporary job folder\nSources + executable","textPreview":"Temporary job folder | Sources + executable","textChars":41,"textLines":2,"bbox":[892,432,325,105]}
+{"kind":"shape","id":"sh/qpkjm1sz","slide":6,"bbox":[226.5,290,0,142]}
+{"kind":"shape","id":"sh/1gv210rm","slide":6,"bbox":[640.5,290,0,142]}
+{"kind":"shape","id":"sh/0fm1sva1","slide":6,"bbox":[1054.5,290,0,142]}
+{"kind":"textbox","id":"sh/zed0zq9g","slide":6,"text":"Development: browser :3000, API :3001. Windows execution uses WSL Ubuntu.","textPreview":"Development: browser :3000, API :3001. Windows execution uses WSL Ubuntu.","textChars":73,"textLines":1,"bbox":[64,600,1152,55]}
+{"kind":"notes","id":"nt/o03m3o","slide":6,"text":"Local development topology. Vite serves port 3000 and proxies /api to Express on port 3001. The compiler runs in WSL Ubuntu on Windows or native Bash on Linux. The JavaScript educational analyzer runs in the Node backend. Browser localStorage is local to that browser origin. Sources: frontend/vite.config.js; frontend/src/App.jsx; backend/server.js; backend/services/wslRunner.js; backend/services/compiler.js."}
+{"kind":"slide","id":"sl/yxyucy","slide":7,"title":"Working flow: edit, compile, inspect","textShapes":11}
+{"kind":"textbox","id":"sh/3e9czil0","slide":7,"text":"Working flow: edit, compile, inspect","textPreview":"Working flow: edit, compile, inspect","textChars":36,"textLines":1,"bbox":[64,48,1150,92]}
+{"kind":"textbox","id":"sh/4zitsnml","slide":7,"text":"LEXORA","textPreview":"LEXORA","textChars":6,"textLines":1,"bbox":[64,672,300,24]}
+{"kind":"textbox","id":"sh/p0bu183q","slide":7,"text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[1150,672,64,24]}
+{"kind":"textbox","id":"sh/q1kvudkb","slide":7,"text":"Edit or upload\n.l / .y + input","textPreview":"Edit or upload | .l / .y + input","textChars":30,"textLines":2,"bbox":[64,180,285,95]}
+{"kind":"textbox","id":"sh/r2tc3ilw","slide":7,"text":"Choose mode\nand source targets","textPreview":"Choose mode | and source targets","textChars":30,"textLines":2,"bbox":[489,180,285,95]}
+{"kind":"textbox","id":"sh/c32dwn2h","slide":7,"text":"Compile request\nValidate fields","textPreview":"Compile request | Validate fields","textChars":31,"textLines":2,"bbox":[914,180,300,95]}
+{"kind":"shape","id":"sh/d4bu5s32","slide":7,"bbox":[349,227.5,140,0]}
+{"kind":"shape","id":"sh/e5kvyxkn","slide":7,"bbox":[774,227.5,140,0]}
+{"kind":"textbox","id":"sh/z6tc72l8","slide":7,"text":"Analyze input\nBuilt-in parser","textPreview":"Analyze input | Built-in parser","textChars":29,"textLines":2,"bbox":[914,365,300,95]}
+{"kind":"textbox","id":"sh/z214bi1w","slide":7,"text":"Generate C\nBuild + run program","textPreview":"Generate C | Build + run program","textChars":30,"textLines":2,"bbox":[489,365,285,95]}
+{"kind":"textbox","id":"sh/e1s32dkb","slide":7,"text":"Return JSON\nClean temporary files","textPreview":"Return JSON | Clean temporary files","textChars":33,"textLines":2,"bbox":[64,365,285,95]}
+{"kind":"shape","id":"sh/14jmdsjm","slide":7,"bbox":[1064,275,0,90]}
+{"kind":"shape","id":"sh/03al4n21","slide":7,"bbox":[774,412.5,140,0]}
+{"kind":"shape","id":"sh/ryh47y1k","slide":7,"bbox":[349,412.5,140,0]}
+{"kind":"textbox","id":"sh/qx83ydkz","slide":7,"text":"Results: native console + educational analysis tabs","textPreview":"Results: native console + educational analysis tabs","textChars":51,"textLines":1,"bbox":[64,535,1150,50]}
+{"kind":"textbox","id":"sh/d0jm98jq","slide":7,"text":"Invalid requests stop at validation. Build failures return the failing phase and available analysis.","textPreview":"Invalid requests stop at validation. Build failures return the failing phase and available analysis.","textChars":100,"textLines":1,"bbox":[64,600,1152,55]}
+{"kind":"notes","id":"nt/yxyucy","slide":7,"text":"Each compilation has two conceptual result paths. In the implementation analyzeInput runs before the native toolchain steps. They are separate computations, not concurrent processes. Invalid requests stop in validation before compiler orchestration. Temporary-directory cleanup runs in finally before the route returns JSON. Sources: frontend/src/App.jsx; backend/routes/compile.js; backend/middleware/validator.js; backend/services/compiler.js."}
+{"kind":"slide","id":"sl/zthh1y","slide":8,"title":"Where the data is stored","textShapes":4}
+{"kind":"textbox","id":"sh/uxwve9wr","slide":8,"text":"Where the data is stored","textPreview":"Where the data is stored","textChars":24,"textLines":1,"bbox":[64,48,1150,92]}
+{"kind":"textbox","id":"sh/h0nepof2","slide":8,"text":"LEXORA","textPreview":"LEXORA","textChars":6,"textLines":1,"bbox":[64,672,300,24]}
+{"kind":"textbox","id":"sh/gzedgjex","slide":8,"text":"08","textPreview":"08","textChars":2,"textLines":1,"bbox":[1150,672,64,24]}
+{"kind":"textbox","id":"sh/6tcva9gf","slide":8,"text":"No application database. Browser drafts and downloaded files are the persistent copies.","textPreview":"No application database. Browser drafts and downloaded files are the persistent copies.","textChars":87,"textLines":1,"bbox":[64,600,1152,55]}
+{"kind":"table","id":"tb/e947ed0z","slide":8,"name":"","rows":5,"cols":3,"preview":"Data | Storage location | Lifetime","bbox":[64,165,1152,408]}
+{"kind":"notes","id":"nt/zthh1y","slide":8,"text":"Sources: frontend/src/App.jsx (lexora.workspace.v2, lexora.theme, result state); backend/services/tempDir.js (os.tmpdir and lexora-UUID); backend/services/compiler.js; frontend/src/services/files.js. Browser storage survives reloads when available, but clearing site data removes it. It is not cloud sync. Temporary cleanup is attempted in finally; failures are logged. No application database is configured."}
+{"kind":"slide","id":"sl/6bk8qo","slide":9,"title":"Compilation location and file lifecycle","textShapes":8}
+{"kind":"textbox","id":"sh/rytg7qdo","slide":9,"text":"Compilation location and file lifecycle","textPreview":"Compilation location and file lifecycle","textChars":39,"textLines":1,"bbox":[64,48,1150,92]}
+{"kind":"textbox","id":"sh/sz2h0ve9","slide":9,"text":"LEXORA","textPreview":"LEXORA","textChars":6,"textLines":1,"bbox":[64,672,300,24]}
+{"kind":"textbox","id":"sh/d0bi90vu","slide":9,"text":"09","textPreview":"09","textChars":2,"textLines":1,"bbox":[1150,672,64,24]}
+{"kind":"textbox","id":"sh/i90zulw7","slide":9,"text":"A fresh directory for each request","textPreview":"A fresh directory for each request","textChars":34,"textLines":1,"bbox":[64,166,1150,50]}
+{"kind":"textbox","id":"sh/3a9g3qdc","slide":9,"text":"os.tmpdir() / lexora-<UUID>","textPreview":"os.tmpdir() / lexora-<UUID>","textChars":27,"textLines":1,"bbox":[64,235,1120,52]}
+{"kind":"textbox","id":"sh/4bihwvex","slide":9,"text":"lex.l     parser.y     input.txt\nlex.yy.c     parser.tab.c     parser.tab.h\ncompiler","textPreview":"lex.l     parser.y     input.txt | lex.yy.c     parser.tab.c     parser.tab.h | compiler","textChars":84,"textLines":3,"bbox":[64,318,1120,152]}
+{"kind":"textbox","id":"sh/5cby50vi","slide":9,"text":"On Windows, WSL accesses the same folder through /mnt/c/...","textPreview":"On Windows, WSL accesses the same folder through /mnt/c/...","textChars":59,"textLines":1,"bbox":[64,506,1152,55]}
+{"kind":"textbox","id":"sh/u50zq1wv","slide":9,"text":"After the result is assembled, the backend attempts to delete the whole job folder.","textPreview":"After the result is assembled, the backend attempts to delete the whole job folder.","textChars":83,"textLines":1,"bbox":[64,570,1152,55]}
+{"kind":"notes","id":"nt/6bk8qo","slide":9,"text":"Windows example path is schematic, based on os.tmpdir(). The same Windows directory is exposed to Linux through /mnt/c. On Linux the path remains a native path. Source .l and .y line endings normalize to LF. input.txt preserves user input exactly. Cleanup is attempted on success and failure. Sources: backend/services/tempDir.js; backend/services/wslRunner.js; backend/services/compiler.js."}
+{"kind":"slide","id":"sl/bd3e29","slide":10,"title":"How Lex and Yacc become an executable","textShapes":4}
+{"kind":"textbox","id":"sh/zqtkjml0","slide":10,"text":"How Lex and Yacc become an executable","textPreview":"How Lex and Yacc become an executable","textChars":37,"textLines":1,"bbox":[64,48,1150,92]}
+{"kind":"textbox","id":"sh/0r2lsrml","slide":10,"text":"LEXORA","textPreview":"LEXORA","textChars":6,"textLines":1,"bbox":[64,672,300,24]}
+{"kind":"textbox","id":"sh/lcb2lw36","slide":10,"text":"10","textPreview":"10","textChars":2,"textLines":1,"bbox":[1150,672,64,24]}
+{"kind":"textbox","id":"sh/nedkn6lc","slide":10,"text":"Lex-only skips Bison. Yacc-only must provide its own yylex() and main().","textPreview":"Lex-only skips Bison. Yacc-only must provide its own yylex() and main().","textChars":72,"textLines":1,"bbox":[64,608,1152,55]}
+{"kind":"table","id":"tb/jqp47qxw","slide":10,"name":"","rows":6,"cols":3,"preview":"Stage | Input | Generated output / action","bbox":[64,162,1152,432]}
+{"kind":"notes","id":"nt/bd3e29","slide":10,"text":"Actual combined-mode order: flex lex.l; bison -d parser.y; normalize references such as y.tab.h to parser.tab.h and regenerate Flex; gcc -o compiler lex.yy.c parser.tab.c -lfl -lm; ./compiler < input.txt. Bison defaults to LALR(1), while supporting other parser table types when requested. Sources: backend/services/compiler.js; https://westes.github.io/flex/manual/Introduction.html; https://www.gnu.org/s/bison/manual/bison.html; https://gcc.gnu.org/onlinedocs/gcc/Overall-Options.html"}
+{"kind":"slide","id":"sl/d2uxl8","slide":11,"title":"Native execution and educational analysis","textShapes":8}
+{"kind":"textbox","id":"sh/zaxcnu18","slide":11,"text":"Native execution and educational analysis","textPreview":"Native execution and educational analysis","textChars":41,"textLines":1,"bbox":[64,48,1150,92]}
+{"kind":"textbox","id":"sh/0b6tgz2t","slide":11,"text":"LEXORA","textPreview":"LEXORA","textChars":6,"textLines":1,"bbox":[64,672,300,24]}
+{"kind":"textbox","id":"sh/1cfupkje","slide":11,"text":"11","textPreview":"11","textChars":2,"textLines":1,"bbox":[1150,672,64,24]}
+{"kind":"textbox","id":"sh/ql4ba5kr","slide":11,"text":"Native program","textPreview":"Native program","textChars":14,"textLines":1,"bbox":[64,177,520,52]}
+{"kind":"textbox","id":"sh/rmdcjalw","slide":11,"text":"Your .l and .y rules\nFlex / Bison generated C\nGCC executable\nActual stdout and diagnostics","textPreview":"Your .l and .y rules | Flex / Bison generated C | GCC executable | Actual stdout and diagnostics","textChars":90,"textLines":4,"bbox":[64,258,535,220]}
+{"kind":"textbox","id":"sh/snmtcf2h","slide":11,"text":"Educational analyzer","textPreview":"Educational analyzer","textChars":20,"textLines":1,"bbox":[672,177,540,52]}
+{"kind":"textbox","id":"sh/dovulkj2","slide":11,"text":"The same program input\nLexora’s built-in C subset\nAST, symbols, and TAC\nOptimization and basic blocks","textPreview":"The same program input | Lexora’s built-in C subset | AST, symbols, and TAC | Optimization and basic blocks","textChars":101,"textLines":4,"bbox":[672,258,540,220]}
+{"kind":"textbox","id":"sh/ah8bm9kv","slide":11,"text":"The displayed educational TAC does not become the native executable.","textPreview":"The displayed educational TAC does not become the native executable.","textChars":68,"textLines":1,"bbox":[64,571,1152,65]}
+{"kind":"notes","id":"nt/d2uxl8","slide":11,"text":"This distinction prevents a misleading claim that arbitrary user grammars automatically produce all educational outputs. analyzeInput reads inputCode with Lexora’s own tokenizer and recursive-descent parser. The educational TAC never feeds GCC. Native diagnostics remain authoritative for the user-supplied program. Sources: README.md; backend/services/inputAnalysis.js; backend/services/compiler.js."}
+{"kind":"slide","id":"sl/i3mc4h","slide":12,"title":"Educational analysis pipeline","textShapes":10}
+{"kind":"textbox","id":"sh/6loju1of","slide":12,"text":"Educational analysis pipeline","textPreview":"Educational analysis pipeline","textChars":29,"textLines":1,"bbox":[64,48,1150,92]}
+{"kind":"textbox","id":"sh/t8f25g7q","slide":12,"text":"LEXORA","textPreview":"LEXORA","textChars":6,"textLines":1,"bbox":[64,672,300,24]}
+{"kind":"textbox","id":"sh/s761wb65","slide":12,"text":"12","textPreview":"12","textChars":2,"textLines":1,"bbox":[1150,672,64,24]}
+{"kind":"textbox","id":"sh/faxk7qpw","slide":12,"text":"Program input","textPreview":"Program input","textChars":13,"textLines":1,"bbox":[64,180,250,90]}
+{"kind":"textbox","id":"sh/e9ojylob","slide":12,"text":"Tokens","textPreview":"Tokens","textChars":6,"textLines":1,"bbox":[514,180,250,90]}
+{"kind":"textbox","id":"sh/1cz29g72","slide":12,"text":"AST","textPreview":"AST","textChars":3,"textLines":1,"bbox":[964,180,250,90]}
+{"kind":"shape","id":"sh/gb610v6h","slide":12,"bbox":[314,225,200,0]}
+{"kind":"shape","id":"sh/3ehkbqps","slide":12,"bbox":[764,225,200,0]}
+{"kind":"textbox","id":"sh/2d8j2lo7","slide":12,"text":"Symbol table\nScope checks","textPreview":"Symbol table | Scope checks","textChars":25,"textLines":2,"bbox":[964,420,250,105]}
+{"kind":"shape","id":"sh/gja5s7ql","slide":12,"bbox":[1089,270,0,150]}
+{"kind":"textbox","id":"sh/hkjmlc76","slide":12,"text":"Three-address\ncode (TAC)","textPreview":"Three-address | code (TAC)","textChars":24,"textLines":2,"bbox":[514,420,250,105]}
+{"kind":"shape","id":"sh/uh8nqh8v","slide":12,"bbox":[639,270,450,150]}
+{"kind":"textbox","id":"sh/fih4j2p0","slide":12,"text":"Optimized TAC\nand basic blocks","textPreview":"Optimized TAC | and basic blocks","textChars":30,"textLines":2,"bbox":[64,420,250,105]}
+{"kind":"shape","id":"sh/47a5wrqx","slide":12,"bbox":[314,472.5,200,0]}
+{"kind":"textbox","id":"sh/p8jmpw7i","slide":12,"text":"The optimizer transforms TAC. Basic-block detection partitions the original TAC.","textPreview":"The optimizer transforms TAC. Basic-block detection partitions the original TAC.","textChars":80,"textLines":1,"bbox":[64,600,1152,55]}
+{"kind":"notes","id":"nt/i3mc4h","slide":12,"text":"The implementation computes tokens and then parseAST(input), whose parser handles its own tokenization. This diagram shows the conceptual learning phases. Semantic analysis and TAC both use the AST. Basic blocks use original TAC. Sources: backend/services/inputAnalysis.js; tokenExtractor.js; astGenerator.js; semanticAnalyzer.js; tacGenerator.js; optimizer.js; basicBlocks.js."}
+{"kind":"slide","id":"sl/z2dnch","slide":13,"title":"Worked example: syntax and symbols","textShapes":14}
+{"kind":"textbox","id":"sh/lofyxcnq","slide":13,"text":"Worked example: syntax and symbols","textPreview":"Worked example: syntax and symbols","textChars":34,"textLines":1,"bbox":[64,48,1150,92]}
+{"kind":"textbox","id":"sh/ylofmh4z","slide":13,"text":"LEXORA","textPreview":"LEXORA","textChars":6,"textLines":1,"bbox":[64,672,300,24]}
+{"kind":"textbox","id":"sh/zmxgv25k","slide":13,"text":"13","textPreview":"13","textChars":2,"textLines":1,"bbox":[1150,672,64,24]}
+{"kind":"textbox","id":"sh/cj6xk7m9","slide":13,"text":"int x = 2 + 3 * 4;","textPreview":"int x = 2 + 3 * 4;","textChars":18,"textLines":1,"bbox":[64,157,1120,64]}
+{"kind":"textbox","id":"sh/xkfetcne","slide":13,"text":"Declare x : int","textPreview":"Declare x : int","textChars":15,"textLines":1,"bbox":[174,255,250,75]}
+{"kind":"textbox","id":"sh/ah4fix43","slide":13,"text":"+","textPreview":"+","textChars":1,"textLines":1,"bbox":[239,375,120,66]}
+{"kind":"textbox","id":"sh/bidwr25o","slide":13,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[95,510,110,66]}
+{"kind":"textbox","id":"sh/ofmxgnmx","slide":13,"text":"*","textPreview":"*","textChars":1,"textLines":1,"bbox":[400,510,110,66]}
+{"kind":"shape","id":"sh/pgvepsni","slide":13,"bbox":[299,330,0,45]}
+{"kind":"shape","id":"sh/xwbih0ne","slide":13,"bbox":[150,441,149,69]}
+{"kind":"shape","id":"sh/wv2hov6t","slide":13,"bbox":[299,441,156,69]}
+{"kind":"textbox","id":"sh/vut0fq58","slide":13,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[350,609,70,40]}
+{"kind":"textbox","id":"sh/at0zmlon","slide":13,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[510,609,70,40]}
+{"kind":"shape","id":"sh/9sridgn2","slide":13,"bbox":[385,576,70,33]}
+{"kind":"shape","id":"sh/8rihkb6h","slide":13,"bbox":[455,576,90,33]}
+{"kind":"textbox","id":"sh/nq90b65w","slide":13,"text":"Operator precedence","textPreview":"Operator precedence","textChars":19,"textLines":1,"bbox":[720,260,470,46]}
+{"kind":"textbox","id":"sh/mp0zilor","slide":13,"text":"Multiplication groups 3 and 4 before the addition to 2.","textPreview":"Multiplication groups 3 and 4 before the addition to 2.","textChars":55,"textLines":1,"bbox":[720,314,470,116]}
+{"kind":"textbox","id":"sh/lori9gn6","slide":13,"text":"Symbol table","textPreview":"Symbol table","textChars":12,"textLines":1,"bbox":[720,445,470,46]}
+{"kind":"textbox","id":"sh/03ihgb6l","slide":13,"text":"x is an integer variable declared in global scope.","textPreview":"x is an integer variable declared in global scope.","textChars":50,"textLines":1,"bbox":[720,499,470,116]}
+{"kind":"notes","id":"nt/z2dnch","slide":13,"text":"Observed directly using analyzeInput(\"int x = 2 + 3 * 4;\"). Nine tokens. AST root is Declaration, datatype int, variable x. Expression has addition at root and multiplication in the right branch. Symbol x has type int, kind variable, global scope, declared true and used false. This is educational analysis, not a claim that the calculator grammar accepts C declarations. Source: backend/services/inputAnalysis.js."}
+{"kind":"slide","id":"sl/crqxe2","slide":14,"title":"Worked example: TAC and optimization","textShapes":9}
+{"kind":"textbox","id":"sh/vmtc7e54","slide":14,"text":"Worked example: TAC and optimization","textPreview":"Worked example: TAC and optimization","textChars":36,"textLines":1,"bbox":[64,48,1150,92]}
+{"kind":"textbox","id":"sh/wn2dgjmp","slide":14,"text":"LEXORA","textPreview":"LEXORA","textChars":6,"textLines":1,"bbox":[64,672,300,24]}
+{"kind":"textbox","id":"sh/hovu9ona","slide":14,"text":"14","textPreview":"14","textChars":2,"textLines":1,"bbox":[1150,672,64,24]}
+{"kind":"textbox","id":"sh/ip4vit4v","slide":14,"text":"Original TAC","textPreview":"Original TAC","textChars":12,"textLines":1,"bbox":[64,178,520,48]}
+{"kind":"textbox","id":"sh/jqdwby5g","slide":14,"text":"t1 = 3 * 4\nt2 = 2 + t1\nx = t2","textPreview":"t1 = 3 * 4 | t2 = 2 + t1 | x = t2","textChars":29,"textLines":3,"bbox":[64,258,520,188]}
+{"kind":"textbox","id":"sh/4rmdk3m1","slide":14,"text":"Optimized TAC","textPreview":"Optimized TAC","textChars":13,"textLines":1,"bbox":[672,178,540,48]}
+{"kind":"textbox","id":"sh/5sved83m","slide":14,"text":"t1 = 12\nt2 = 14\nx = 14","textPreview":"t1 = 12 | t2 = 14 | x = 14","textChars":22,"textLines":3,"bbox":[672,258,540,188]}
+{"kind":"textbox","id":"sh/yt0v6p4r","slide":14,"text":"Constant folding evaluates arithmetic. Constant propagation substitutes known values.","textPreview":"Constant folding evaluates arithmetic. Constant propagation substitutes known values.","textChars":85,"textLines":1,"bbox":[64,491,1152,55]}
+{"kind":"textbox","id":"sh/zu9czu5c","slide":14,"text":"This example has one basic block because it contains no branches.","textPreview":"This example has one basic block because it contains no branches.","textChars":65,"textLines":1,"bbox":[64,558,1152,55]}
+{"kind":"notes","id":"nt/crqxe2","slide":14,"text":"Actual output of analyzeInput(\"int x = 2 + 3 * 4;\"). Original TAC: t1 = 3 * 4; t2 = 2 + t1; x = t2. Optimized TAC: t1 = 12; t2 = 14; x = 14. The optimizer retains three assignments in this example, so do not claim instruction-count reduction or measured speedup. Source: backend/services/optimizer.js and observed analyzer output."}
+{"kind":"slide","id":"sl/zg1miz","slide":15,"title":"Technology stack and responsibilities","textShapes":3}
+{"kind":"textbox","id":"sh/wjqxwja9","slide":15,"text":"Technology stack and responsibilities","textPreview":"Technology stack and responsibilities","textChars":37,"textLines":1,"bbox":[64,48,1150,92]}
+{"kind":"textbox","id":"sh/vihw3eto","slide":15,"text":"LEXORA","textPreview":"LEXORA","textChars":6,"textLines":1,"bbox":[64,672,300,24]}
+{"kind":"textbox","id":"sh/uh8futs3","slide":15,"text":"15","textPreview":"15","textChars":2,"textLines":1,"bbox":[1150,672,64,24]}
+{"kind":"table","id":"tb/4bq987eh","slide":15,"name":"","rows":6,"cols":3,"preview":"Layer | Technology | Responsibility","bbox":[64,167,1152,430]}
+{"kind":"notes","id":"nt/zg1miz","slide":15,"text":"Versions derive from package.json dependency ranges, not installed-version measurements. Frontend uses React 19 and Vite 8, superseding older architecture notes mentioning React 18. Avoid claiming exact toolchain versions unless measured on the demonstration machine. Sources: frontend/package.json; backend/package.json; backend/services/wslRunner.js; Dockerfile."}
+{"kind":"slide","id":"sl/c3jqzi","slide":16,"title":"Demonstration: calculator","textShapes":10}
+{"kind":"textbox","id":"sh/0zaxkri1","slide":16,"text":"Demonstration: calculator","textPreview":"Demonstration: calculator","textChars":25,"textLines":1,"bbox":[64,48,1150,92]}
+{"kind":"textbox","id":"sh/zy1gb6hw","slide":16,"text":"LEXORA","textPreview":"LEXORA","textChars":6,"textLines":1,"bbox":[64,672,300,24]}
+{"kind":"textbox","id":"sh/yxsfi10b","slide":16,"text":"16","textPreview":"16","textChars":2,"textLines":1,"bbox":[1150,672,64,24]}
+{"kind":"textbox","id":"sh/dwjy9wzq","slide":16,"text":"Input","textPreview":"Input","textChars":5,"textLines":1,"bbox":[64,178,620,48]}
+{"kind":"textbox","id":"sh/cvaxgri5","slide":16,"text":"3 + 5 * 2","textPreview":"3 + 5 * 2","textChars":9,"textLines":1,"bbox":[64,253,650,78]}
+{"kind":"textbox","id":"sh/ruhg7mhk","slide":16,"text":"Native output","textPreview":"Native output","textChars":13,"textLines":1,"bbox":[855,178,360,48]}
+{"kind":"textbox","id":"sh/qt8feh0z","slide":16,"text":"13","textPreview":"13","textChars":2,"textLines":1,"bbox":[852,243,340,142]}
+{"kind":"textbox","id":"sh/xs3ylgzu","slide":16,"text":"Demo sequence","textPreview":"Demo sequence","textChars":13,"textLines":1,"bbox":[64,415,600,46]}
+{"kind":"textbox","id":"sh/wruhsby9","slide":16,"text":"Load Calculator, choose Lex + Yacc, then Compile.\nShow the console, syntax tree, and TAC tabs.","textPreview":"Load Calculator, choose Lex + Yacc, then Compile. | Show the console, syntax tree, and TAC tabs.","textChars":94,"textLines":2,"bbox":[64,475,1150,95]}
+{"kind":"textbox","id":"sh/25ofm5k3","slide":16,"text":"Keep a newline after the expression. The bundled grammar uses EOL to finish a result.","textPreview":"Keep a newline after the expression. The bundled grammar uses EOL to finish a result.","textChars":85,"textLines":1,"bbox":[64,600,1152,55]}
+{"kind":"notes","id":"nt/c3jqzi","slide":16,"text":"Verified using backend/services/compiler.js with the bundled examples/calculator/calculator.l and calculator.y and exact stdin \"3 + 5 * 2\\n\". Observed success true, stdout \"13\\n\", no errors. Saved observation in private build files. The grammar requires EOL after each expression, so keep the trailing newline. This is an actual backend result, not a UI screenshot."}
+{"kind":"slide","id":"sl/0fp7h5","slide":17,"title":"Verification and error handling","textShapes":10}
+{"kind":"textbox","id":"sh/ad47ylgr","slide":17,"text":"Verification and error handling","textPreview":"Verification and error handling","textChars":31,"textLines":1,"bbox":[64,48,1150,92]}
+{"kind":"textbox","id":"sh/xgfq9gfi","slide":17,"text":"LEXORA","textPreview":"LEXORA","textChars":6,"textLines":1,"bbox":[64,672,300,24]}
+{"kind":"textbox","id":"sh/wf6p0vyx","slide":17,"text":"17","textPreview":"17","textChars":2,"textLines":1,"bbox":[1150,672,64,24]}
+{"kind":"textbox","id":"sh/nad836x0","slide":17,"text":"14","textPreview":"14","textChars":2,"textLines":1,"bbox":[64,158,260,144]}
+{"kind":"textbox","id":"sh/m947u1gv","slide":17,"text":"selected checks passed","textPreview":"selected checks passed","textChars":22,"textLines":1,"bbox":[330,212,800,66]}
+{"kind":"textbox","id":"sh/9cvq5gf6","slide":17,"text":"Checked behavior","textPreview":"Checked behavior","textChars":16,"textLines":1,"bbox":[64,350,530,46]}
+{"kind":"textbox","id":"sh/obmpwbyl","slide":17,"text":"AST, scopes, branch TAC, unsupported input, native lexer cases, and file uploads.","textPreview":"AST, scopes, branch TAC, unsupported input, native lexer cases, and file uploads.","textChars":81,"textLines":1,"bbox":[64,404,530,116]}
+{"kind":"textbox","id":"sh/76x8zaxk","slide":17,"text":"Runtime controls","textPreview":"Runtime controls","textChars":16,"textLines":1,"bbox":[672,350,530,46]}
+{"kind":"textbox","id":"sh/65or65gz","slide":17,"text":"100 KB field limits, 10-second stage timeouts, and a 1 MB captured-output limit.","textPreview":"100 KB field limits, 10-second stage timeouts, and a 1 MB captured-output limit.","textChars":80,"textLines":1,"bbox":[672,404,530,116]}
+{"kind":"textbox","id":"sh/0ne1c3e9","slide":17,"text":"Build failures identify the failing phase. Program output can remain visible even on failure.","textPreview":"Build failures identify the failing phase. Program output can remain visible even on failure.","textChars":93,"textLines":1,"bbox":[64,600,1152,55]}
+{"kind":"notes","id":"nt/0fp7h5","slide":17,"text":"Observed command: node --test backend/analysis.test.js frontend/files.test.js. Results: 14 tests passed, 0 failed. This is a selected suite, not a claim that all repository tests ran. It includes some native lexer integration checks. Also verified calculator compilation separately. Repository regression tests cover additional modes, timeouts and request errors but were not rerun for this deck. Sources: test output; backend/services/wslRunner.js; backend/middleware/validator.js."}
+{"kind":"slide","id":"sl/3wz6p3","slide":18,"title":"Current scope and future work","textShapes":12}
+{"kind":"textbox","id":"sh/bupcze5w","slide":18,"text":"Current scope and future work","textPreview":"Current scope and future work","textChars":29,"textLines":1,"bbox":[64,48,1150,92]}
+{"kind":"textbox","id":"sh/cvydsj61","slide":18,"text":"LEXORA","textPreview":"LEXORA","textChars":6,"textLines":1,"bbox":[64,672,300,24]}
+{"kind":"textbox","id":"sh/xw7u1onm","slide":18,"text":"18","textPreview":"18","textChars":2,"textLines":1,"bbox":[1150,672,64,24]}
+{"kind":"textbox","id":"sh/yxgvu9o7","slide":18,"text":"Current scope","textPreview":"Current scope","textChars":13,"textLines":1,"bbox":[64,180,530,46]}
+{"kind":"textbox","id":"sh/zypc3e5s","slide":18,"text":"Educational C subset, selected .l/.y targets, and local browser drafts.","textPreview":"Educational C subset, selected .l/.y targets, and local browser drafts.","textChars":71,"textLines":1,"bbox":[64,234,530,116]}
+{"kind":"textbox","id":"sh/kzydwj6d","slide":18,"text":"Language extensions","textPreview":"Language extensions","textChars":19,"textLines":1,"bbox":[672,180,530,46]}
+{"kind":"textbox","id":"sh/l0ru5ony","slide":18,"text":"Add arrays, structs, pointers, and more complete C semantics.","textPreview":"Add arrays, structs, pointers, and more complete C semantics.","textChars":61,"textLines":1,"bbox":[672,234,530,116]}
+{"kind":"textbox","id":"sh/m10vytoj","slide":18,"text":"Current boundaries","textPreview":"Current boundaries","textChars":18,"textLines":1,"bbox":[64,387,530,46]}
+{"kind":"textbox","id":"sh/729w7y5o","slide":18,"text":"No extra C/header project files, cloud workspace sync, or full C frontend.","textPreview":"No extra C/header project files, cloud workspace sync, or full C frontend.","textChars":74,"textLines":1,"bbox":[64,441,530,116]}
+{"kind":"textbox","id":"sh/3ehkb6tg","slide":18,"text":"Deployment improvements","textPreview":"Deployment improvements","textChars":23,"textLines":1,"bbox":[672,387,530,46]}
+{"kind":"textbox","id":"sh/id8ji1cv","slide":18,"text":"Add isolated execution workers before accepting untrusted public submissions.","textPreview":"Add isolated execution workers before accepting untrusted public submissions.","textChars":77,"textLines":1,"bbox":[672,441,530,116]}
+{"kind":"textbox","id":"sh/5gj2dgb6","slide":18,"text":"Uploaded C actions run with the backend user’s privileges. This is a trusted-use workbench.","textPreview":"Uploaded C actions run with the backend user’s privileges. This is a trusted-use workbench.","textChars":91,"textLines":1,"bbox":[64,600,1152,55]}
+{"kind":"notes","id":"nt/3wz6p3","slide":18,"text":"These limits describe actual implementation boundaries. This is a trusted local workbench. Native C actions execute with backend-user privileges. WSL, timeouts and per-job folders are not a security sandbox. Public untrusted submissions require real isolation. Sources: README.md; backend/services/wslRunner.js. Future work is proposed, not implemented."}
+{"kind":"slide","id":"sl/lfsiyl","slide":19,"title":"Conclusion","textShapes":6}
+{"kind":"textbox","id":"sh/ny9czylo","slide":19,"text":"Conclusion","textPreview":"Conclusion","textChars":10,"textLines":1,"bbox":[64,48,1150,92]}
+{"kind":"textbox","id":"sh/8zits3m9","slide":19,"text":"LEXORA","textPreview":"LEXORA","textChars":6,"textLines":1,"bbox":[64,672,300,24]}
+{"kind":"textbox","id":"sh/90ru183u","slide":19,"text":"19","textPreview":"19","textChars":2,"textLines":1,"bbox":[1150,672,64,24]}
+{"kind":"textbox","id":"sh/al0bud4f","slide":19,"text":"Lexora connects practical compiler\nexperiments with visible intermediate forms.","textPreview":"Lexora connects practical compiler | experiments with visible intermediate forms.","textChars":79,"textLines":2,"bbox":[64,185,1150,132]}
+{"kind":"textbox","id":"sh/vm9c3yl0","slide":19,"text":"Real Flex / Bison / GCC execution\nBrowser drafts and temporary build files\nA separate analyzer for compiler concepts","textPreview":"Real Flex / Bison / GCC execution | Browser drafts and temporary build files | A separate analyzer for compiler concepts","textChars":116,"textLines":3,"bbox":[64,367,1130,177]}
+{"kind":"textbox","id":"sh/wn2dw3m5","slide":19,"text":"Questions & discussion","textPreview":"Questions & discussion","textChars":22,"textLines":1,"bbox":[64,593,1100,51]}
+{"kind":"notes","id":"nt/lfsiyl","slide":19,"text":"Close by linking the project back to its objective: a student can submit real specifications, see native results, and examine compiler concepts in the same interface. Emphasize integration as the contribution. Invite questions about the separate analysis pipeline, storage or generated files. Implementation sources: README.md; frontend/src/App.jsx; backend/services/compiler.js; backend/services/inputAnalysis.js."}
+{"kind":"slide","id":"sl/64cdqg","slide":20,"title":"References","textShapes":8}
+{"kind":"textbox","id":"sh/xgrqdc7e","slide":20,"text":"References","textPreview":"References","textChars":10,"textLines":1,"bbox":[64,48,1150,92]}
+{"kind":"textbox","id":"sh/ad0rix83","slide":20,"text":"LEXORA","textPreview":"LEXORA","textChars":6,"textLines":1,"bbox":[64,672,300,24]}
+{"kind":"textbox","id":"sh/be98b2po","slide":20,"text":"20","textPreview":"20","textChars":2,"textLines":1,"bbox":[1150,672,64,24]}
+{"kind":"textbox","id":"sh/obipgnqx","slide":20,"text":"[1] Aho, Lam, Sethi & Ullman (2007)\nCompilers: Principles, Techniques, and Tools, 2nd edition\nhttps://www.cs.columbia.edu/~aho/books.html","textPreview":"[1] Aho, Lam, Sethi & Ullman (2007) | Compilers: Principles, Techniques, and Tools, 2nd edition | https://www.cs.columbia.edu/~aho/books....","textChars":137,"textLines":3,"bbox":[64,157,1150,98]}
+{"kind":"textbox","id":"sh/pcrq9s7i","slide":20,"text":"[2] Flex manual, Introduction\nhttps://westes.github.io/flex/manual/Introduction.html","textPreview":"[2] Flex manual, Introduction | https://westes.github.io/flex/manual/Introduction.html","textChars":84,"textLines":2,"bbox":[64,284,1150,72]}
+{"kind":"textbox","id":"sh/29g7ed8r","slide":20,"text":"[3] GNU Bison manual\nhttps://www.gnu.org/s/bison/manual/bison.html","textPreview":"[3] GNU Bison manual | https://www.gnu.org/s/bison/manual/bison.html","textChars":66,"textLines":2,"bbox":[64,383,1150,72]}
+{"kind":"textbox","id":"sh/na987ipc","slide":20,"text":"[4] GCC manual, Overall Options\nhttps://gcc.gnu.org/onlinedocs/gcc/Overall-Options.html","textPreview":"[4] GCC manual, Overall Options | https://gcc.gnu.org/onlinedocs/gcc/Overall-Options.html","textChars":87,"textLines":2,"bbox":[64,482,1150,72]}
+{"kind":"textbox","id":"sh/8729sr61","slide":20,"text":"Project evidence: README, frontend workspace, backend compiler and analysis modules","textPreview":"Project evidence: README, frontend workspace, backend compiler and analysis modules","textChars":83,"textLines":1,"bbox":[64,594,1150,52]}
+{"kind":"notes","id":"nt/64cdqg","slide":20,"text":"Primary references accessed 8 October 2026. Full URLs appear here and in relevant slide notes. The local implementation is the primary evidence for all Lexora-specific claims."}
