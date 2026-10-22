@@ -30,6 +30,10 @@ test('classroom deployment opens frontend and compile API without a password', a
   assert.match(index.headers.get('content-type'), /text\/html/);
   const examples = await fetch(`${base}/api/examples`);
   assert.equal(examples.status, 200);
+  const calculator = await fetch(`${base}/api/examples/calculator`);
+  assert.equal(calculator.status, 200);
+  const calculatorFiles = await calculator.json();
+  assert.ok(calculatorFiles.lexFile && calculatorFiles.yaccFile);
   const compile = await fetch(`${base}/api/compile`, {
     method: 'POST', headers: { origin: hosted.RENDER_EXTERNAL_URL, 'content-type': 'application/json' }, body: '{}',
   });

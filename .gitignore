@@ -28,6 +28,6 @@ examples/**/parser.tab.c
 examples/**/parser.tab.h
 examples/**/calculator.tab.c
 examples/**/calculator.tab.h
-examples/**/calculator
+/examples/calculator/calculator
 examples/**/compiler
 examples/**/*.o
