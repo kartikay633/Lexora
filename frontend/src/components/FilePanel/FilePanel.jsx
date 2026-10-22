@@ -1,6 +1,27 @@
 import React, { useState } from 'react';
-import { FileCode, FileText, Upload, Plus, Trash2, Edit2, Check, X } from 'lucide-react';
+import { FileCode, FileText, Upload, Plus, Trash2, Edit2, Check, X, Target } from 'lucide-react';
 import './FilePanel.css';
+
+function TargetSelect({ kind, files, selectedId, onChange }) {
+  const extension = kind === 'lexer' ? '.l' : '.y';
+  const id = `compile-${kind}-target`;
+  return <div className="target-row">
+    <label className="target-label" htmlFor={id}>{kind === 'lexer' ? 'Lexer' : 'Parser'} ({extension})</label>
+    <select
+      id={id}
+      className="target-dropdown"
+      aria-label={`Compile ${kind}`}
+      aria-describedby="compile-target-help"
+      title={files.find(file => file.id === selectedId)?.name}
+      value={selectedId || ''}
+      disabled={files.length === 0}
+      onChange={event => onChange(event.target.value)}
+    >
+      {files.length === 0 && <option value="">Add a {extension} file</option>}
+      {files.map(file => <option key={file.id} value={file.id}>{file.name}</option>)}
+    </select>
+  </div>;
+}
 
 export default function FilePanel({
   files = [],
@@ -23,6 +44,8 @@ export default function FilePanel({
 
   const lexFiles = files.filter((f) => f.name.endsWith('.l'));
   const yaccFiles = files.filter((f) => f.name.endsWith('.y'));
+  const usesLex = compileMode !== 'yacc';
+  const usesYacc = compileMode !== 'lex';
 
   const handleCreateSubmit = (e) => {
     e?.preventDefault();
@@ -76,7 +99,7 @@ export default function FilePanel({
 
       {/* New File Inline Creator */}
       {isCreating && (
-        <form className="new-file-form" onSubmit={handleCreateSubmit}>
+        <form className="new-file-form" onSubmit={handleCreateSubmit} noValidate>
           <input
             type="text"
             className="new-file-input"
@@ -120,46 +143,12 @@ export default function FilePanel({
         </button>
       </div>
 
-      {/* Multi-file Compilation Target Selectors */}
-      {(lexFiles.length > 1 || (compileMode !== 'lex' && yaccFiles.length > 1)) && (
-        <div className="target-selection-section">
-          {lexFiles.length > 1 && (
-            <div className="target-row">
-              <span className="target-label">Compile Lexer:</span>
-              <select
-                className="target-dropdown"
-                aria-label="Compile lexer"
-                value={selectedLexId || ''}
-                onChange={(e) => onSelectTargetLex(e.target.value)}
-              >
-                {lexFiles.map((f) => (
-                  <option key={f.id} value={f.id}>
-                    {f.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-          )}
-
-          {compileMode !== 'lex' && yaccFiles.length > 1 && (
-            <div className="target-row">
-              <span className="target-label">Compile Parser:</span>
-              <select
-                className="target-dropdown"
-                aria-label="Compile parser"
-                value={selectedYaccId || ''}
-                onChange={(e) => onSelectTargetYacc(e.target.value)}
-              >
-                {yaccFiles.map((f) => (
-                  <option key={f.id} value={f.id}>
-                    {f.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-          )}
-        </div>
-      )}
+      <section className="target-selection-section" aria-label="Compile targets">
+        <h2 className="target-heading">Compile targets</h2>
+        {usesLex && <TargetSelect kind="lexer" files={lexFiles} selectedId={selectedLexId} onChange={onSelectTargetLex} />}
+        {usesYacc && <TargetSelect kind="parser" files={yaccFiles} selectedId={selectedYaccId} onChange={onSelectTargetYacc} />}
+        <p className="target-help" id="compile-target-help">Choose the files to run. Opening a file only changes the editor.</p>
+      </section>
 
       {/* File List */}
       <nav className="file-list">
@@ -173,26 +162,24 @@ export default function FilePanel({
             const isActive = activeFileId === file.id;
             const category = getFileCategory(file.name);
             const lineCount = file.content ? file.content.split('\n').length : 0;
-            const isTargetLex = selectedLexId === file.id;
-            const isTargetYacc = compileMode !== 'lex' && selectedYaccId === file.id;
+            const isTargetLex = usesLex && selectedLexId === file.id;
+            const isTargetYacc = usesYacc && selectedYaccId === file.id;
+            const targetKind = usesLex && file.name.endsWith('.l') ? 'lexer' : usesYacc && file.name.endsWith('.y') ? 'parser' : null;
+            const isTarget = isTargetLex || isTargetYacc;
 
             return (
               <div
                 key={file.id}
                 id={`file-item-${file.id}`}
                 className={`file-item ${isActive ? 'active' : ''}`}
-                role="button"
-                tabIndex={0}
-                aria-label={`Open ${file.name}`}
-                onKeyDown={e => { if (e.target === e.currentTarget && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); onSelectFile(file.id); } }}
-                onClick={() => onSelectFile(file.id)}
               >
-                <div className="file-item-main">
-                  <span className="file-icon-box">{category.icon}</span>
-                  {editingId === file.id ? (
+                {editingId === file.id ? (
+                  <div className="file-item-main">
+                    <span className="file-icon-box">{category.icon}</span>
                     <input
                       type="text"
                       className="inline-rename-input"
+                      aria-label={`Rename ${file.name}`}
                       value={editName}
                       autoFocus
                       onClick={(e) => e.stopPropagation()}
@@ -203,9 +190,12 @@ export default function FilePanel({
                         if (e.key === 'Escape') setEditingId(null);
                       }}
                     />
-                  ) : (
-                    <div className="file-info-col">
-                      <div className="file-name-row">
+                  </div>
+                ) : (
+                  <button type="button" className="file-item-main file-open-btn" aria-label={`Open ${file.name}`} title={file.name} onClick={() => onSelectFile(file.id)}>
+                    <span className="file-icon-box">{category.icon}</span>
+                    <span className="file-info-col">
+                      <span className="file-name-row">
                         <span className="file-name">{file.name}</span>
                         {isTargetLex && (
                           <span className="target-tag" title="Selected Lexer for pipeline">TARGET</span>
@@ -213,13 +203,24 @@ export default function FilePanel({
                         {isTargetYacc && (
                           <span className="target-tag" title="Selected Parser for pipeline">TARGET</span>
                         )}
-                      </div>
+                      </span>
                       <span className="file-subtext">{category.type}</span>
-                    </div>
-                  )}
-                </div>
+                    </span>
+                  </button>
+                )}
 
                 <div className="file-item-right">
+                  {targetKind && <button
+                    type="button"
+                    className={`file-target-btn ${isTarget ? 'is-target' : ''}`}
+                    aria-label={isTarget ? `Current ${targetKind} target: ${file.name}` : `Use ${file.name} as ${targetKind} target`}
+                    title={isTarget ? `Current ${targetKind} target` : `Use ${file.name} as ${targetKind} target`}
+                    disabled={isTarget}
+                    onClick={() => targetKind === 'lexer' ? onSelectTargetLex(file.id) : onSelectTargetYacc(file.id)}
+                  >
+                    {isTarget ? <Check size={13} /> : <Target size={13} />}
+                    <span>{isTarget ? 'Set' : 'Use'}</span>
+                  </button>}
                   <span className="file-lines">{lineCount}L</span>
                   <div className="item-hover-actions">
                     <button

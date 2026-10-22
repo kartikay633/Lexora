@@ -7,7 +7,7 @@
     "dev:backend": "cd backend && node server.js",
     "dev:frontend": "cd frontend && npm run dev",
     "install:all": "cd backend && npm install && cd ../frontend && npm install",
-    "test": "node backend/test.js && node --test backend/regression.test.js backend/analysis.test.js && node --test frontend/files.test.js",
+    "test": "node backend/test.js && node --test backend/regression.test.js backend/analysis.test.js && node --test frontend/files.test.js frontend/targets.test.js",
     "test:deployment": "npm run build && node --test backend/deployment.test.js",
     "dev": "node dev.cjs",
     "build": "npm --prefix frontend run build"

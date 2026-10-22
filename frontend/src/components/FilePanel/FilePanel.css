@@ -159,8 +159,49 @@
   border-radius: var(--radius-md);
   padding: 0.55rem 0.7rem;
   text-align: left;
-  cursor: pointer;
   transition: var(--transition);
+}
+
+.file-open-btn {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+}
+
+.file-open-btn:focus-visible,
+.file-target-btn:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 3px;
+}
+
+.file-target-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  flex-shrink: 0;
+  padding: 0.3rem;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: 0.68rem;
+  cursor: pointer;
+}
+
+.file-target-btn:hover,
+.file-target-btn.is-target {
+  color: var(--accent-primary);
+  border-color: var(--accent-border);
+  background: var(--accent-surface);
+}
+
+.file-target-btn:disabled {
+  cursor: default;
+  opacity: 1;
 }
 
 .file-item:hover {
@@ -215,6 +256,7 @@
 }
 
 .target-tag {
+  flex-shrink: 0;
   font-size: 0.58rem;
   font-weight: 700;
   color: var(--accent-primary);
@@ -229,18 +271,29 @@
 /* Multi-file Target Selection Section */
 .target-selection-section {
   padding: 0.5rem 0.85rem;
-  background: rgba(16, 185, 129, 0.04);
+  background: var(--accent-surface);
   border-bottom: 1px solid var(--border-subtle);
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
 }
 
+.target-heading {
+  color: var(--text-primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.target-help {
+  color: var(--text-secondary);
+  font-size: 0.7rem;
+  line-height: 1.45;
+}
+
 .target-row {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
 .target-label {
@@ -256,15 +309,23 @@
   color: var(--accent-primary);
   font-size: 0.72rem;
   font-family: var(--font-mono);
-  padding: 0.2rem 0.4rem;
+  padding: 0.4rem;
   border-radius: var(--radius-sm);
   outline: none;
-  max-width: 130px;
+  width: 100%;
+  min-width: 0;
   cursor: pointer;
 }
 
 .target-dropdown:focus {
   border-color: var(--accent-primary);
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.target-dropdown:disabled {
+  color: var(--text-muted);
+  cursor: default;
 }
 
 .file-subtext {

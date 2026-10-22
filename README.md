@@ -19,7 +19,7 @@ Open http://localhost:3000. The backend runs on 127.0.0.1:3001. On Linux, instal
 - The initial workspace contains a runnable word/number lexer. Press **Compile**, or **Ctrl/Cmd + Enter**.
 - Choose **Lex Only**, **Lex + Yacc**, or **Yacc Only**. Yacc-only source must supply its own `yylex` and `main` functions. A standalone lexer may supply `main`, or use Flex's library entry point.
 - Upload `.l`, `.y`, `.txt`, or `.in` files (100 KB per file). Text/input files populate stdin. Source files are added without replacing your edits. Duplicate names are rejected with a visible message. Upload a matching lexer/parser pair together to select both.
-- The file sidebar supports creating, renaming, deleting, and selecting compilation targets when several files exist. Only the selected `.l` and/or `.y` are compiled; extra C/header files are not supported.
+- The file sidebar supports creating, renaming, deleting, and selecting compilation targets. Under **Compile targets**, choose the lexer (`.l`) and parser (`.y`) independently for **Lex + Yacc**, or click **Use** beside a file to make it the target. Opening a file changes the editor without changing the selected targets. Your choices persist after refresh. Only the selected `.l` and/or `.y` are compiled; extra C/header files are not supported.
 - Calculator and Variables examples add files to the workspace and select them without deleting existing sources.
 - Input is passed exactly as typed, including trailing newlines. The bundled calculators expect a newline after each expression.
 - Drafts are saved in this browser. **Save file** downloads the selected source; **Save input** downloads stdin. Source/target changes clear previous results.
