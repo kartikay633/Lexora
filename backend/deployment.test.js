@@ -5,6 +5,7 @@ const { createApp } = require('./server');
 
 const hosted = {
   NODE_ENV: 'production',
+  DEMO_AUTH_ENABLED: 'true',
   RENDER_EXTERNAL_URL: 'https://lexora-test.onrender.com',
   DEMO_USERNAME: 'demo',
   DEMO_PASSWORD: 'deployment-test-password',
@@ -12,9 +13,31 @@ const hosted = {
 const authorization = `Basic ${Buffer.from(`${hosted.DEMO_USERNAME}:${hosted.DEMO_PASSWORD}`).toString('base64')}`;
 
 test('hosted compiler refuses to start without complete credentials or origin', () => {
-  assert.throws(() => deploymentSettings({ NODE_ENV: 'production' }), /DEMO_USERNAME/);
+  assert.throws(() => deploymentSettings({ NODE_ENV: 'production', DEMO_AUTH_ENABLED: 'true' }), /DEMO_USERNAME/);
   assert.throws(() => deploymentSettings({ ...hosted, DEMO_PASSWORD: '' }), /DEMO_PASSWORD/);
   assert.throws(() => deploymentSettings({ ...hosted, RENDER_EXTERNAL_URL: '' }), /FRONTEND_ORIGIN/);
+});
+
+test('classroom deployment opens frontend and compile API without a password', async t => {
+  // Existing Render password variables must not keep authentication enabled.
+  const server = createApp({ ...hosted, DEMO_AUTH_ENABLED: undefined }).listen(0, '127.0.0.1');
+  await new Promise(resolve => server.once('listening', resolve));
+  t.after(() => new Promise(resolve => server.close(resolve)));
+  const base = `http://127.0.0.1:${server.address().port}`;
+  const index = await fetch(`${base}/`);
+  assert.equal(index.status, 200);
+  assert.equal(index.headers.get('www-authenticate'), null);
+  assert.match(index.headers.get('content-type'), /text\/html/);
+  const examples = await fetch(`${base}/api/examples`);
+  assert.equal(examples.status, 200);
+  const compile = await fetch(`${base}/api/compile`, {
+    method: 'POST', headers: { origin: hosted.RENDER_EXTERNAL_URL, 'content-type': 'application/json' }, body: '{}',
+  });
+  assert.equal(compile.status, 400);
+  const forbidden = await fetch(`${base}/api/compile`, {
+    method: 'POST', headers: { origin: 'https://another-site.example', 'content-type': 'application/json' }, body: '{}',
+  });
+  assert.equal(forbidden.status, 403);
 });
 
 test('hosting protects frontend and API while accepting only configured browser origins', async t => {

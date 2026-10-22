@@ -55,7 +55,7 @@ Tests need the compiler tools installed. The suite covers standalone Lex and Yac
 
 This is a **trusted local workbench**, not a sandbox for a public website. Uploaded C actions execute with the backend user's filesystem/network privileges. The API binds to loopback and accepts browser compilation requests only from the local frontend. Timeouts and temporary folders do not isolate hostile programs. Public deployment requires an isolated per-job execution service with restricted filesystem/network access and CPU/memory/process limits before accepting untrusted submissions.
 
-For a password-protected online demo with trusted users, see [the free Render deployment guide](docs/deploy-render.md). The included Dockerfile installs the native compiler tools and serves the frontend and backend together. Production startup requires demo credentials; password protection is access control, not a code sandbox.
+For an online classroom demo, see [the free Render deployment guide](docs/deploy-render.md). The included Dockerfile installs the native compiler tools and serves the frontend and backend together. The demo opens without a password by default. Set `DEMO_AUTH_ENABLED=true` with `DEMO_USERNAME` and `DEMO_PASSWORD` to restore password protection. Classroom access does not provide a code sandbox.
 
 ## Structure
 
