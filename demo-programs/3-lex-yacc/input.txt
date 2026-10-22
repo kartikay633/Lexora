@@ -1,0 +1,22 @@
+#include <stdio.h>
+/* Sum the even numbers from 1 to n */
+int main() {
+    int n = 10;
+    int sum = 0;
+    int i;
+    for (i = 1; i <= n; i++) {
+        if (i % 2 == 0) {
+            sum = sum + i;
+        } else {
+            sum = sum + 0;
+        }
+    }
+    int countdown = 3;
+    while (countdown > 0) {
+        countdown = countdown - 1;
+    }
+    int result = 2 * 5 + sum;
+    printf("Sum of evens = %d\n", sum);
+    printf("Result = %d\n", result);
+    return result;
+}

@@ -1,0 +1,18 @@
+#include <stdio.h>
+/* Compute a weighted total */
+int main() {
+    int base = 4 * 25;
+    float rate = 7.5 / 2;
+    int total = 0;
+    int i;
+    for (i = 0; i < 5; i++) {
+        if (i % 2 == 0 && i != 4) {
+            total = total + base * 1;
+        } else {
+            total = total - 0;
+        }
+    }
+    // print the result
+    printf("Total: %d\n", total);
+    return 0;
+}
