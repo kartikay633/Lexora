@@ -26,7 +26,7 @@ function generateTAC(ast) {
   function emit(node) {
     if(!node) return null;
     switch(node.type) {
-      case 'Number': return String(node.value);
+      case 'Number': return node.raw ?? String(node.value);
       case 'Literal': return node.value;
       case 'Identifier': return resolve(node.name);
       case 'UnaryOp': {const arg=emit(node.argument),result=temp();push(node.op,arg,null,result,`${result} = ${node.op}${arg}`);return result;}

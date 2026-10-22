@@ -14,7 +14,7 @@ graph TD
         UI --- Tabs
     end
 
-    subgraph Backend ["Backend (Port 3001)"]
+    subgraph Backend ["Backend (Port 3002)"]
         Exp["Express.js Server"]
         RouteComp["/api/compile"]
         RouteEx["/api/examples"]
@@ -60,7 +60,7 @@ graph TD
   - `OutputPanel`: Multi-tab panel displaying Console Output, Token Table, Syntax Tree, Symbol Table, Three-Address Code, Optimization Comparison, and Basic Blocks.
 
 ### Backend (`backend/`)
-- **Express Server (`server.js`)**: Runs on port 3001, handles incoming JSON requests.
+- **Express Server (`server.js`)**: Runs on port 3002, handles incoming JSON requests.
 - **Input Validation (`validator.js`)**: Validates presence of fields, size limits (< 100KB), and null-byte detection.
 - **WSL Execution Runner (`wslRunner.js`)**: Shells out safely via `wsl -d Ubuntu bash -c` with isolated working directories and bash `timeout 10` guards.
 - **Compiler Orchestrator (`compiler.js`)**: Coordinates the Flex → Bison → GCC → Execute pipeline and integrates educational visualization modules.

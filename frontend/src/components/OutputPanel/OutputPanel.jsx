@@ -210,10 +210,11 @@ export default function OutputPanel({
             tac={result?.tac || []}
             optimizedTac={result?.optimizedTac || []}
             optimizationLog={result?.optimizationLog || []}
+            emptyMessage={emptyMessage}
           />
         )}
         {activeTab === 'basicblocks' && (
-          <BasicBlocks basicBlocks={result?.basicBlocks || []} />
+          <BasicBlocks basicBlocks={result?.basicBlocks || []} emptyMessage={emptyMessage} />
         )}
       </div>
     </div>

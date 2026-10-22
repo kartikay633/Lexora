@@ -12,7 +12,7 @@ npm run install:all
 npm run dev
 ```
 
-Open http://localhost:3000. The backend runs on 127.0.0.1:3001. On Linux, install the same compiler tools and run the same npm commands. Set `WSL_DISTRO` if your Windows distribution has a different name. The toolbar reports whether the server and compiler tools are available.
+Open http://localhost:3000. The backend runs on 127.0.0.1:3002; to use another port, set `PORT` before starting (PowerShell: `$env:PORT=3005; npm run dev`) and the frontend proxy follows it. On Linux, install the same compiler tools and run the same npm commands. Set `WSL_DISTRO` if your Windows distribution has a different name. The toolbar reports whether the server and compiler tools are available.
 
 ## Use
 

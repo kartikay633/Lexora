@@ -5,22 +5,29 @@
  * 1. Constant Folding (evaluating compile-time arithmetic)
  * 2. Algebraic Simplification (identities like x+0, x*1, x*0)
  * 3. Constant Propagation (substituting constant values)
- * 4. Dead Code Elimination (removing unused assignments)
  */
 
-function evaluate(op, a, b) {
+function evaluate(op, a, b, floating) {
   switch (op) {
     case '+': return a + b;
     case '-': return a - b;
     case '*': return a * b;
-    case '/': return b !== 0 ? Math.trunc(a / b) : null;
-    case '%': return b !== 0 ? a % b : null;
+    // C truncates only integer division; % is not defined for floating operands.
+    case '/': return b !== 0 ? (floating ? a / b : Math.trunc(a / b)) : null;
+    case '%': return b !== 0 && !floating ? a % b : null;
     default: return null;
   }
 }
 
 function isNumeric(val) {
   return typeof val === 'string' && val.trim() !== '' && Number.isFinite(Number(val));
+}
+
+const isFloating = val => /[.eE]/.test(val);
+
+// Keep floating results visibly floating (6.0, not 6) so later folds stay floating.
+function formatConstant(value, floating) {
+  return floating && Number.isInteger(value) ? value.toFixed(1) : String(value);
 }
 
 /**
@@ -78,12 +85,30 @@ function optimizeTAC(instructions) {
     constMap.delete(instr.result);
 
     // Pass 1.1: Constant Folding
+    if (['-', '!'].includes(instr.op) && (instr.arg2 === null || instr.arg2 === undefined) && isNumeric(instr.arg1)) {
+      const value = instr.op === '-'
+        ? (Number(instr.arg1) === 0 ? instr.arg1 : instr.arg1.startsWith('-') ? instr.arg1.slice(1) : `-${instr.arg1}`)
+        : (Number(instr.arg1) === 0 ? '1' : '0');
+      const foldedText = `${instr.result} = ${value}`;
+      log.push({
+        line: i + 1,
+        type: 'Constant Folding',
+        before: originalText,
+        after: foldedText,
+        description: `Evaluated ${instr.op}${instr.arg1} → ${value}`,
+      });
+      constMap.set(instr.result, value);
+      optimized.push({ op: '=', arg1: value, arg2: null, result: instr.result, text: foldedText });
+      continue;
+    }
     if (isNumeric(instr.arg1) && isNumeric(instr.arg2) && ['+', '-', '*', '/', '%'].includes(instr.op)) {
       const v1 = Number(instr.arg1);
       const v2 = Number(instr.arg2);
-      const foldedVal = evaluate(instr.op, v1, v2);
+      const floating = isFloating(instr.arg1) || isFloating(instr.arg2);
+      const result = evaluate(instr.op, v1, v2, floating);
+      const foldedVal = result === null ? null : formatConstant(result, floating);
 
-      if (foldedVal !== null && Number.isFinite(foldedVal)) {
+      if (foldedVal !== null && Number.isFinite(result)) {
         const foldedText = `${instr.result} = ${foldedVal}`;
         log.push({
           line: i + 1,
@@ -94,7 +119,7 @@ function optimizeTAC(instructions) {
         });
         instr = {
           op: '=',
-          arg1: String(foldedVal),
+          arg1: foldedVal,
           arg2: null,
           result: instr.result,
           text: foldedText,
@@ -166,13 +191,13 @@ function optimizeTAC(instructions) {
           text: simpText,
         };
         if (isNumeric(newArg1)) {
-          constMap.set(result, Number(newArg1));
+          constMap.set(result, newArg1);
         }
       }
     }
 
     if (instr.op === '=' && isNumeric(instr.arg1)) {
-      constMap.set(instr.result, Number(instr.arg1));
+      constMap.set(instr.result, instr.arg1);
     }
 
     // Always regenerate display text after propagation, including unary minus.

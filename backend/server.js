@@ -2,7 +2,7 @@
  * server.js — Lexora Backend Server
  * 
  * Express server that handles compilation requests.
- * Runs on port 3001, frontend proxies /api requests here.
+ * Runs on port 3002 (3001 is left free for other local apps), frontend proxies /api requests here.
  */
 
 const express = require('express');
@@ -54,7 +54,7 @@ function createApp(env = process.env) {
 
 // Start server
 if (require.main === module) {
-  const PORT = process.env.PORT || 3001;
+  const PORT = process.env.PORT || 3002;
   const HOST = process.env.HOST || '127.0.0.1';
   createApp().listen(PORT, HOST, () => {
     console.log(`\n  🔷 Lexora Backend Server`);

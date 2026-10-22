@@ -72,6 +72,13 @@ test('optimizer preserves zero division and truncates negative integer division'
   assert.equal(result.optimizedTac[0].arg1, '-3');
   assert.equal(result.optimizedTac[1].op, '/'); assert.equal(result.optimizedTac[2].op, '%');
 });
+test('optimizer keeps floating division and folds negated constants', () => {
+  const { analyzeInput } = require('./services/inputAnalysis');
+  const texts = input => analyzeInput(input).optimizedTac.map(instr => instr.text);
+  assert.deepEqual(texts('float a = 7.5 / 2;'), ['t1 = 3.75', 'a = 3.75']);
+  assert.deepEqual(texts('float y = 3.0 * 2; float z = y / 4;'), ['t1 = 6.0', 'y = 6.0', 't2 = 1.5', 'z = 1.5']);
+  assert.deepEqual(texts('int x = -3 * 2;'), ['t1 = -3', 't2 = -6', 'x = -6']);
+});
 test('semantic analysis catches first-assignment self-reference', () => {
   const { analyze } = require('./services/semanticAnalyzer');
   assert.equal(analyze(parseAST('x = x + 1')).semanticErrors.length, 1);

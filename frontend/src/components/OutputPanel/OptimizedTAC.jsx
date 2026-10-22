@@ -6,12 +6,13 @@ export default function OptimizedTAC({
   tac = [],
   optimizedTac = [],
   optimizationLog = [],
+  emptyMessage,
 }) {
   if (!tac || tac.length === 0) {
     return (
       <div className="empty-state">
         <p className="empty-title">No Optimizations to Display</p>
-        <p className="empty-desc">Click "Compile" to generate and optimize Three-Address Code.</p>
+        <p className="empty-desc">{emptyMessage || 'Click "Compile" to generate and optimize Three-Address Code.'}</p>
       </div>
     );
   }
