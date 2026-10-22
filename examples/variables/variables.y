@@ -52,7 +52,7 @@ void set_symbol(const char *name, int val) {
 %token <id> IDENTIFIER
 %token ASSIGN PLUS MINUS MULTIPLY DIVIDE LPAREN RPAREN SEMI EOL
 
-%type <num> expression term factor
+%type <num> expression factor
 
 %left PLUS MINUS
 %left MULTIPLY DIVIDE

@@ -35,7 +35,10 @@ function tokenize(input) {
     if (number) {
       const start = pos; pos += number[0].length;
       if (input[pos] === '.' || /[a-zA-Z_]/.test(input[pos] || '')) throw new ParseError('Invalid number',start,line);
-      add('NUMBER',Number(number[0]),start); continue;
+      add('NUMBER',Number(number[0]),start);
+      // Keep floating literals as written so 3.0 / 2 stays floating division.
+      if (/[.eE]/.test(number[0])) tokens.at(-1).raw=number[0];
+      continue;
     }
     const id = input.slice(pos).match(/^[a-zA-Z_][a-zA-Z0-9_]*/);
     if (id) { add(types.has(id[0]) ? 'TYPE' : 'ID',id[0]); pos += id[0].length; continue; }
@@ -62,7 +65,7 @@ function parseAST(input) {
   function factor() {
     const tok = peek();
     let node;
-    if (tok.type === 'NUMBER') { take(); node={type:'Number',value:tok.value}; }
+    if (tok.type === 'NUMBER') { take(); node={type:'Number',value:tok.value,...(tok.raw && {raw:tok.raw})}; }
     else if (tok.type === 'STRING' || tok.type === 'CHAR') { take(); node={type:'Literal',value:tok.value,dataType:tok.type === 'STRING' ? 'string' : 'char'}; }
     else if (['++','--'].includes(tok.value)) { take(); return {type:'Update',variable:id(),op:tok.value,prefix:true}; }
     else if (['-','+','!','&'].includes(tok.value)) { take(); const argument=factor(); return tok.value === '+' ? argument : {type:'UnaryOp',op:tok.value,argument}; }

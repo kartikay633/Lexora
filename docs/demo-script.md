@@ -6,7 +6,7 @@ This script provides an exact, step-by-step walkthrough to present during facult
 
 ### Step 1: Open the Application
 1. Ensure the servers are running:
-   - Backend on `http://localhost:3001`
+   - Backend on `http://localhost:3002`
    - Frontend on `http://localhost:3000`
 2. Open `http://localhost:3000` in Google Chrome or Edge.
 3. Point out:

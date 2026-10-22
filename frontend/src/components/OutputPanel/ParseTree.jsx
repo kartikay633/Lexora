@@ -121,7 +121,7 @@ export default function ParseTree({ ast, emptyMessage }) {
   const getNodeInfo = (n) => {
     if (n.type === 'BinaryOp') return { label: `Op '${n.op}'`, detail: 'Binary Operation', type: 'op' };
     if (n.type === 'UnaryOp') return { label: `Unary '${n.op}'`, detail: 'Unary Operation', type: 'op' };
-    if (n.type === 'Number') return { label: String(n.value), detail: 'Numeric Literal', type: 'num' };
+    if (n.type === 'Number') return { label: n.raw ?? String(n.value), detail: 'Numeric Literal', type: 'num' };
     if (n.type === 'Identifier') return { label: n.name, detail: 'Variable Identifier', type: 'id' };
     if (n.type === 'Assignment') return { label: `${n.variable} =`, detail: 'Assignment Target', type: 'assign' };
     if (n.type === 'Declaration') return { label: `${n.dataType} ${n.variable}`, detail: 'Declaration', type: 'assign' };

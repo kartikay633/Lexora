@@ -2,12 +2,12 @@ import React from 'react';
 import { ArrowDown } from 'lucide-react';
 import './BasicBlocks.css';
 
-export default function BasicBlocks({ basicBlocks = [] }) {
+export default function BasicBlocks({ basicBlocks = [], emptyMessage }) {
   if (!basicBlocks || basicBlocks.length === 0) {
     return (
       <div className="empty-state">
         <p className="empty-title">No Basic Blocks Detected</p>
-        <p className="empty-desc">Click "Compile" to detect leaders and partition into Basic Blocks.</p>
+        <p className="empty-desc">{emptyMessage || 'Click "Compile" to detect leaders and partition into Basic Blocks.'}</p>
       </div>
     );
   }
